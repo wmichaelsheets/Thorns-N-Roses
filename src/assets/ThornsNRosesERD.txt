@@ -1,0 +1,51 @@
+Table flowers {
+  id integer [primary key]
+  color varchar
+  species varcher
+}
+
+Table nurseries {
+  id integer [primary key]
+  name varchar
+}
+
+Table flowersJoin {
+  id integer [primary key]
+  flowersId integer
+  nurseriesId integer
+  price integer
+}
+
+Table distributors {
+  id integer [primary key]
+  businessName varchar
+  markupPercentage integer 
+}
+
+Table retailers {
+  id integer [primary key]
+  businessName varchar
+  address varchar
+  markupPercentage integer
+  distributorsId integer
+}
+
+Table ndJoin {
+  id integer [primary key]
+  nurseriesId integer
+  distributorsId integer
+}
+
+
+
+
+
+Ref: "flowersJoin"."flowersId" < "flowers"."id"
+
+Ref: "flowersJoin"."nurseriesId" < "nurseries"."id"
+
+Ref: "nurseries"."id" < "ndJoin"."nurseriesId"
+
+Ref: "distributors"."id" < "ndJoin"."distributorsId"
+
+Ref: "distributors"."id" < "retailers"."distributorsId"
