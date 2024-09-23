@@ -1,0 +1,7 @@
+.nav-bar {
+    display: flex;
+    border: solid black;
+    margin-bottom: 1000px;
+    width: 750px;
+    justify-content: space-around;
+}
