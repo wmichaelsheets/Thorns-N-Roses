@@ -1,12 +1,12 @@
 .nav-bar-container {
-border: solid purple;
-    display: flex;
-flex-direction: column;
+  border: solid purple;
+  display: flex;
+  flex-direction: column;
 }
 
 .nav-bar {
-    display: flex;
-    border: solid black;
-    width: 750px;
-    justify-content: space-around;
+  display: flex;
+  border: solid black;
+  width: 750px;
+  justify-content: space-around;
 }
