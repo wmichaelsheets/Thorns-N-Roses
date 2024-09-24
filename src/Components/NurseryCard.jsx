@@ -32,31 +32,25 @@ export const NurseryCard = ({ nursery, nurseryDistributor }) => {
       });
       setFilteredFlowers(mappedFlowers);
     }
-  }, [flowers]);
-
-  useEffect(() => {}, [distributors]);
+  }, [flowers, nursery.flowersJoin]);
 
   return (
     <div className="listCard">
       <h2>{nursery.name}</h2>
-      {filteredFlowers.length > 0 ? (
-        <ul>
-          {filteredFlowers.map((flower) => {
-            return (
-              <>
-                <li
-                  key={flower?.id}
-                >{`$ ${nursery.flowersJoin[0].price} ${flower?.color} ${flower?.species} `}</li>
-              </>
-            );
-          })}
-          {currentNurseryDist.map((nursery) => {
-            return <li key={nursery.id}>{nursery.distributor.businessName}</li>;
-          })}
-        </ul>
-      ) : (
-        <p>No flowers in this nursery</p>
-      )}
+      {filteredFlowers.length > 0?(
+      <ul>
+        {filteredFlowers.map((flower, index) => (
+          <li
+            key={flower?.id || index}
+          >{`$ ${nursery.flowersJoin[0].price} ${flower?.color} ${flower?.species} `}</li>
+        ))}
+        {currentNurseryDist.map((nurseryDist) => (
+          <li key={nurseryDist.distributor.id}>
+            {nurseryDist.distributor.businessName}
+          </li>
+        ))}
+      </ul>
+        ):(<p>no flowers in nursery</p>)}
     </div>
   );
 };
