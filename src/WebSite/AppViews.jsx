@@ -1,5 +1,6 @@
 import { Outlet, Route, Routes } from "react-router-dom"
 import { NavBar } from "./NavBar"
+import { NurseryList } from "../Components/NurseryList"
 
 export const AppViews = () => {
     return(
@@ -8,7 +9,7 @@ export const AppViews = () => {
         <NavBar/>
         <Outlet />
     </> }>
-        <Route path="/nurseries" element={ <div>Text</div> } />
+        <Route path="/nurseries" element={ <NurseryList /> } />
         <Route path="/distributors" element={ <></> } />
         <Route path="/retailers" element={ <></> } />
     </Route>
