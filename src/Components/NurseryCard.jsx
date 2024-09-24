@@ -8,7 +8,6 @@ export const NurseryCard = ({ nursery, nurseryDistributor }) => {
   const [flowers, setFlowers] = useState([]);
   const [filteredFlowers, setFilteredFlowers] = useState([]);
   const [distributors, setDistributors] = useState([]);
-  const [filteredDistributors, setFilteredDistributors] = useState([]);
   const [currentNurseryDist, setCurrentNurseryDist] = useState([]);
 
   useEffect(() => {
@@ -37,20 +36,22 @@ export const NurseryCard = ({ nursery, nurseryDistributor }) => {
   return (
     <div className="listCard">
       <h2>{nursery.name}</h2>
-      {filteredFlowers.length > 0?(
-      <ul>
-        {filteredFlowers.map((flower, index) => (
-          <li
-            key={flower?.id || index}
-          >{`$ ${nursery.flowersJoin[0].price} ${flower?.color} ${flower?.species} `}</li>
-        ))}
-        {currentNurseryDist.map((nurseryDist) => (
-          <li key={nurseryDist.distributor.id}>
-            {nurseryDist.distributor.businessName}
-          </li>
-        ))}
-      </ul>
-        ):(<p>no flowers in nursery</p>)}
+      {filteredFlowers.length > 0 ? (
+        <ul>
+          {filteredFlowers.map((flower, index) => (
+            <li
+              key={flower?.id || index}
+            >{`$ ${nursery.flowersJoin[0].price} ${flower?.color} ${flower?.species} `}</li>
+          ))}
+          {currentNurseryDist.map((nurseryDist) => (
+            <li key={nurseryDist.distributor.id}>
+              {nurseryDist.distributor.businessName}
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p>No flowers in nursery</p>
+      )}
     </div>
   );
 };
