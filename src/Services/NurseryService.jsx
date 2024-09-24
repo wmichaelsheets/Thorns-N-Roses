@@ -4,3 +4,8 @@ export const getFlowerByNursery = () => {
     )
 }
 
+export const getDistributorByNursery = () => {
+    return fetch('http://localhost:8088/nurserys?_embed=ndJoin').then((res) =>
+        res.json()
+    )
+}
