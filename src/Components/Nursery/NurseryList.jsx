@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import './NurseryList.css';
-import { getFlowerByNursery } from '../Services/NurseryService';
+import { getFlowerByNursery } from '../../Services/NurseryService';
 import { NurseryCard } from './NurseryCard';
 
 export const NurseryList = () => {

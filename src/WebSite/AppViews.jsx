@@ -1,6 +1,6 @@
 import { Outlet, Route, Routes } from "react-router-dom"
 import { NavBar } from "./NavBar"
-import { NurseryList } from "../Components/NurseryList"
+import { NurseryList } from "../Components/Nursery/NurseryList"
 
 export const AppViews = () => {
     return(
