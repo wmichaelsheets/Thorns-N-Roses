@@ -15,9 +15,11 @@ export const RetailersCard = ({ retailer }) => {
   }, [retailer]);
 
   useEffect(() => {
-    getAndExpandNurseryAndFlower(retailDistributor.nurseId).then(
-      (expandedArr) => setFlowerAndNursery(expandedArr)
-    );
+    if (retailDistributor.nurseId) {
+      getAndExpandNurseryAndFlower(retailDistributor.nurseId).then(
+        (expandedArr) => setFlowerAndNursery(expandedArr)
+      );
+    }
   }, [retailDistributor]);
 
   return (
@@ -25,7 +27,7 @@ export const RetailersCard = ({ retailer }) => {
       <h2>{retailer.businessName}</h2>
       <p>{retailer.address}</p>
       <p>{retailDistributor.distributor?.businessName}</p>
-      {flowerAndNursery.length > 0 ? (
+      {flowerAndNursery.length ? (
         <ul>
           {flowerAndNursery.map((obj) => {
             const distributorMarkUp =
