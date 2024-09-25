@@ -1,0 +1,28 @@
+-Will need a customers resource in db.
+
+- Each customer will need name, name of business,email, and
+password
+
+- When user authenicates save user id in local storage
+
+- When user visits site again log in form should not appear if they
+already authenicated 
+
+-Add "Purchase" button next to each flower type in RetailCard.jsx
+
+-Each time purchase button is clicked 1 flower of that type
+needs to be saved to their shopping card
+
+
+-Cart in DB should store the following:
+ -Customer Id
+  - Retailer Id
+   -Flower id
+
+
+-Login.jsx 
+If user's email and password is in database in Users resource
+then allow user to have access to AppView
+
+-Once logged in user's id should be stored in local storage
+
