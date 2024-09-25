@@ -2,8 +2,9 @@ import { useEffect, useState } from 'react';
 import './RetailersCard.css';
 import { getDistributorsByIdAndExpandDist } from '../../Services/DistributorService';
 import { getAndExpandNurseryAndFlower } from '../../Services/FlowerServices';
+import { createCart } from '../../Services/CartService';
 
-export const RetailersCard = ({ retailer }) => {
+export const RetailersCard = ({ retailer, currentUser }) => {
   const [retailDistributor, setRetailDistributor] = useState({});
   const [flowerAndNursery, setFlowerAndNursery] = useState([]);
 
@@ -22,8 +23,15 @@ export const RetailersCard = ({ retailer }) => {
     }
   }, [retailDistributor]);
 
-  const handlePurchaseButton = () => {
-    console.log('clicked');
+  const handlePurchaseButton = (event) => {
+    const flowerId = event.target.id;
+    const cartObj = {
+      retailerId: retailer.id,
+      flowersId: parseInt(flowerId),
+      customerId: currentUser.id,
+    };
+
+    createCart(cartObj);
   };
 
   return (
@@ -51,7 +59,9 @@ export const RetailersCard = ({ retailer }) => {
                 {` Flower: ${obj.flower.color} ${obj.flower.species} (${finalMarkUpPrice})
                    
               `}
-                <button onClick={handlePurchaseButton}>Purchase Flower</button>
+                <button id={`${obj.flowerId}`} onClick={handlePurchaseButton}>
+                  Purchase Flower
+                </button>
                 <div>{`Nursery: ${obj.nurse.name}`}</div>
               </li>
             );

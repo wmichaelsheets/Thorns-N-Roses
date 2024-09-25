@@ -31,7 +31,10 @@ export const AppViews = () => {
       >
         <Route path="/nurseries" element={<NurseryList />} />
         <Route path="/distributors" element={<DistributorList />} />
-        <Route path="/retailers" element={<RetailersList />} />
+        <Route
+          path="/retailers"
+          element={<RetailersList currentUser={currentUser} />}
+        />
         <Route path="/cart" element={<Cart />} />
       </Route>
     </Routes>
