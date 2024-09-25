@@ -4,7 +4,7 @@ Table flowers {
   species varcher
 }
 
-Table nurseries {
+Table nurses {
   id integer [primary key]
   name varchar
 }
@@ -12,7 +12,7 @@ Table nurseries {
 Table flowersJoin {
   id integer [primary key]
   flowersId integer
-  nurseriesId integer
+  nurseId integer
   price integer
 }
 
@@ -32,9 +32,26 @@ Table retailers {
 
 Table ndJoin {
   id integer [primary key]
-  nurseriesId integer
+  nurseId integer
   distributorsId integer
 }
+
+Table customers {
+  id integer [primary key]
+  custName varchar
+  custBuss varchar
+  custEmail varchar
+  password varchar
+}
+
+Table cart {
+  id integer [primary key]
+  retailerId integer
+  flowersId integer
+  customersId integer
+}
+
+
 
 
 
@@ -42,10 +59,16 @@ Table ndJoin {
 
 Ref: "flowersJoin"."flowersId" < "flowers"."id"
 
-Ref: "flowersJoin"."nurseriesId" < "nurseries"."id"
+Ref: "flowersJoin"."nurseId" < "nurses"."id"
 
-Ref: "nurseries"."id" < "ndJoin"."nurseriesId"
+Ref: "nurses"."id" < "ndJoin"."nurseId"
 
 Ref: "distributors"."id" < "ndJoin"."distributorsId"
 
 Ref: "distributors"."id" < "retailers"."distributorsId"
+
+Ref: "customers"."id" - "cart"."customersId"
+
+Ref: "cart"."retailerId" < "retailers"."id"
+
+//Change for push to Github.
