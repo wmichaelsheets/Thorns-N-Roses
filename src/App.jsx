@@ -10,15 +10,6 @@ import './App.css';
 
 function App() {
   return (
-<<<<<<< HEAD
-    <div>
-      <div className="margins left"></div>
-      <div className="margins right"></div>
-      <div id="root">
-      <AppViews />;
-      </div>
-    </div>
-=======
     <Routes>
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
@@ -32,7 +23,6 @@ function App() {
         }
       />
     </Routes>
->>>>>>> fa769b395a97e11fa1c20e40b9604ebd21c84d44
   );
 }
 
