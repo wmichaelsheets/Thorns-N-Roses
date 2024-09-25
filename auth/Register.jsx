@@ -6,8 +6,9 @@ import { createUser, getUserByEmail } from '../src/Services/UserService';
 export const Register = (props) => {
   const [customer, setCustomer] = useState({
     email: '',
-    fullName: '',
-    isStaff: false,
+    name: '',
+    businessName: '',
+    password: '',
   });
   let navigate = useNavigate();
 
@@ -55,7 +56,7 @@ export const Register = (props) => {
             <input
               onChange={updateCustomer}
               type="text"
-              id="fullName"
+              id="name"
               className="form-control"
               placeholder="Enter your name"
               required
@@ -75,6 +76,31 @@ export const Register = (props) => {
             />
           </div>
         </fieldset>
+        <fieldset>
+          <div className="form-group">
+            <input
+              onChange={updateCustomer}
+              type="password"
+              id="password"
+              className="form-control"
+              placeholder="Password"
+              required
+            />
+          </div>
+        </fieldset>
+        <fieldset>
+          <div className="form-group">
+            <input
+              onChange={updateCustomer}
+              type="text"
+              id="businessName"
+              className="form-control"
+              placeholder="Business name"
+              required
+            />
+          </div>
+        </fieldset>
+
         <fieldset>
           <div className="form-group"></div>
         </fieldset>
