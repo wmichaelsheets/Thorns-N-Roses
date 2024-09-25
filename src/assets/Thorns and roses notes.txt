@@ -1,0 +1,33 @@
+Retail List.jsx//
+
+-Will fetch all of retailers and store as state
+
+-Will map over each retailer and render retailer card
+
+
+RetailerCard.jsx//
+
+
+-Each card will render business name and address(In retailers object)
+
+- Need to fetch from ndJoin resource using distributorId on retailer object
+also need to expand distributorId (once retail state from parent component 
+is filled with useEffect).
+
+- Store object fetched from ndJoin in state (retailDistributor) 
+then render distributor name from this state.
+
+-use useEffect once retailDistributor is filled to grab flowers and
+nursery info.
+
+- Then fetch from flowersJoin resource using nurseryId from retailDistributor and expand flowerId &nurseId 
+and store in state (flowerAndNurseryObj) to display (add markup percentage from retailer).
+
+
+Extras notes:
+-Already have service functions for the following:
+-Fetching all retailers
+- Fetch distributor by distributorId on ndJoin WITHOUT expanding distributor
+(will need to expand distributor for this section)
+-Fetch flowers by nurseryId expanding flower but NOT expanding nursery
+(will need to expand nursery as well for this section)

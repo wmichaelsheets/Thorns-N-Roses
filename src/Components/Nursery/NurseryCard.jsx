@@ -37,20 +37,24 @@ export const NurseryCard = ({ nursery, nurseryDistributor }) => {
   return (
     <div className="listCard">
       <h2>{nursery.name}</h2>
-      {filteredFlowers.length > 0?(
-      <ul>
-        {filteredFlowers.map((flower, index) => (
-          <li
-            key={flower?.id || index}
-          >{`$ ${nursery.flowersJoin[0].price} ${flower?.color} ${flower?.species} `}</li>
-        ))}
-        {currentNurseryDist.map((nurseryDist) => (
-          <li key={nurseryDist.distributor.id}>
-            {nurseryDist.distributor.businessName}
-          </li>
-        ))}
-      </ul>
-        ):(<p>no flowers in nursery</p>)}
+      {filteredFlowers.length > 0 ? (
+        <ul>
+          {filteredFlowers.map((flower, index) => (
+            <li key={flower?.id || index}>
+              {` Flower:${flower?.color} ${
+                flower?.species
+              } ($${nursery.flowersJoin[0].price.toFixed(2)}`})
+            </li>
+          ))}
+          {currentNurseryDist.map((nurseryDist) => (
+            <li key={nurseryDist.distributor.id}>
+              Distributor: {nurseryDist.distributor.businessName}
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p>No flowers in nursery</p>
+      )}
     </div>
   );
 };
