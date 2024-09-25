@@ -6,8 +6,18 @@ import { RetailersList } from '../Components/Retailers/RetailersList';
 import { Login } from '../../auth/Login';
 import { Register } from '../../auth/Register';
 import { Cart } from '../Components/Cart/CartList';
+import { useEffect, useState } from 'react';
 
 export const AppViews = () => {
+  const [currentUser, setCurrentUser] = useState({});
+
+  useEffect(() => {
+    const localFlowerUser = localStorage.getItem('flower_user');
+    const flowerUserObject = JSON.parse(localFlowerUser);
+
+    setCurrentUser(flowerUserObject);
+  }, []);
+
   return (
     <Routes>
       <Route
@@ -19,8 +29,6 @@ export const AppViews = () => {
           </>
         }
       >
-        <Route index element={<Login />} />
-        <Route path="/register" element={<Register />} />
         <Route path="/nurseries" element={<NurseryList />} />
         <Route path="/distributors" element={<DistributorList />} />
         <Route path="/retailers" element={<RetailersList />} />
