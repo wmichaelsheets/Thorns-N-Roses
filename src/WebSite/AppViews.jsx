@@ -3,6 +3,8 @@ import { NavBar } from './NavBar';
 import { NurseryList } from '../Components/Nursery/NurseryList';
 import { DistributorList } from '../Components/Distributor/DistributorList';
 import { RetailersList } from '../Components/Retailers/RetailersList';
+import { Login } from '../../auth/Login';
+import { Register } from '../../auth/Register';
 
 export const AppViews = () => {
   return (
@@ -16,6 +18,8 @@ export const AppViews = () => {
           </>
         }
       >
+        <Route index element={<Login />} />
+        <Route path="/register" element={<Register />} />
         <Route path="/nurseries" element={<NurseryList />} />
         <Route path="/distributors" element={<DistributorList />} />
         <Route path="/retailers" element={<RetailersList />} />
