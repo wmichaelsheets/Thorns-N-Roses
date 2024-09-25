@@ -22,11 +22,15 @@ export const RetailersCard = ({ retailer }) => {
     }
   }, [retailDistributor]);
 
+  const handlePurchaseButton = () => {
+    console.log('clicked');
+  };
+
   return (
     <div className="retailer-card">
       <h2>{retailer.businessName}</h2>
-      <p>{retailer.address}</p>
-      <p>{retailDistributor.distributor?.businessName}</p>
+      <p>{`Address: ${retailer.address}`}</p>
+      <p>{`Distributor:${retailDistributor.distributor?.businessName}`}</p>
       {flowerAndNursery.length ? (
         <ul>
           {flowerAndNursery.map((obj) => {
@@ -43,11 +47,13 @@ export const RetailersCard = ({ retailer }) => {
             }).format(retailMarkUp);
 
             return (
-              <li
-                key={obj.id}
-              >{` Flower: ${obj.flower.color} ${obj.flower.species} (${finalMarkUpPrice})
-                   Nursery: ${obj.nurse.name}
-              `}</li>
+              <li key={obj.id}>
+                {` Flower: ${obj.flower.color} ${obj.flower.species} (${finalMarkUpPrice})
+                   
+              `}
+                <button onClick={handlePurchaseButton}>Purchase Flower</button>
+                <div>{`Nursery: ${obj.nurse.name}`}</div>
+              </li>
             );
           })}
         </ul>
