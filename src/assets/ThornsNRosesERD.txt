@@ -38,9 +38,9 @@ Table ndJoin {
 
 Table customers {
   id integer [primary key]
-  custName varchar
-  custBuss varchar
-  custEmail varchar
+  name varchar
+  businessName varchar
+  email varchar
   password varchar
 }
 
@@ -70,5 +70,3 @@ Ref: "distributors"."id" < "retailers"."distributorsId"
 Ref: "customers"."id" - "cart"."customersId"
 
 Ref: "cart"."retailerId" < "retailers"."id"
-
-//Change for push to Github.
