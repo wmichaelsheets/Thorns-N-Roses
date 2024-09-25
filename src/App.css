@@ -1,9 +1,39 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #fff; /* Ensure a white background for content area */
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
 #root {
   max-width: 1280px;
+  width: 100%; /* Makes sure it stays responsive */
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  z-index: 1; /* Make sure content is on top */
 }
+
+.margins {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100px; /* Width of the margin image */
+  background: url('src/Images/FloralPattern.JPG') repeat-y;
+  background-size: contain;
+  z-index: 0;
+}
+
+.margins.left {
+  left: 0;
+}
+
+.margins.right {
+  right: 0;
+}
+
 
 .logo {
   height: 6em;

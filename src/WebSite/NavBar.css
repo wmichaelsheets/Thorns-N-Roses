@@ -1,7 +1,7 @@
 .nav-bar-container {
   border: solid purple;
   display: flex;
-  flex-direction: column;
+  justify-content: center; 
 }
 
 .nav-bar {
