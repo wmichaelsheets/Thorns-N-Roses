@@ -11,5 +11,5 @@ export const createCart = (customer) => {
 export const getCartItemsByCustomerId = (customerId) => {
   return fetch(
     `http://localhost:8088/carts?customerId=${customerId}&_expand=flower`
-  );
+  ).then((res) => res.json());
 };

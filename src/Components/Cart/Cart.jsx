@@ -1,11 +1,81 @@
 import React, { useEffect, useState } from 'react';
 import './Cart.css';
+import { getCartItemsByCustomerId } from '../../Services/CartService';
 
-export const Cart = () => {
+export const Cart = ({ currentUser }) => {
   const [currentUserCartItems, setCurrentUserCartItems] = useState([]);
+  const [flowerSummary, setFlowerSummary] = useState([]);
+  useEffect(() => {
+    getCartItemsByCustomerId(currentUser.id).then((cartsArr) =>
+      setCurrentUserCartItems(cartsArr)
+    );
+  }, [currentUser]);
 
-  
-  return <>hi</>;
+  useEffect(() => {
+    const summarizeFlowers = () => {
+      const summary = {};
+
+      currentUserCartItems.forEach((item) => {
+        const { flower, price } = item;
+        const { species, color } = flower;
+        const priceNumber = parseFloat(price.replace('$', '')); // Convert price string to number
+
+        const key = `${species}-${color}`;
+
+        // If flower already exists in summary, update the quantity and total cost
+        if (summary[key]) {
+          summary[key].quantity += 1;
+          summary[key].totalCost += priceNumber;
+        } else {
+          // Otherwise, create a new entry
+          summary[key] = {
+            species,
+            color,
+            quantity: 1,
+            totalCost: priceNumber,
+          };
+        }
+      });
+
+      // Convert the summary object to an array for easier rendering
+      const summaryArray = Object.values(summary);
+      setFlowerSummary(summaryArray);
+    };
+
+    if (currentUserCartItems.length > 0) {
+      summarizeFlowers();
+    }
+  }, [currentUserCartItems]);
+
+  return (
+    <div>
+      <h2>My Cart</h2>
+      {flowerSummary.length === 0 ? (
+        <p>Your cart is empty.</p>
+      ) : (
+        <table>
+          <thead>
+            <tr>
+              <th>Flower</th>
+              <th>Quantity</th>
+              <th>Total Cost</th>
+            </tr>
+          </thead>
+          <tbody>
+            {flowerSummary.map((flower, index) => (
+              <tr key={index}>
+                <td>{`${flower.color} ${flower.species}`}</td>
+                {/* <td>{flower.color}</td> */}
+                <td>{flower.quantity}</td>
+                <td>${flower.totalCost.toFixed(2)}</td>{' '}
+                {/* Format total cost to 2 decimal places */}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
+    </div>
+  );
 };
 
 // const [retailers, setRetailers] = useState([]);
