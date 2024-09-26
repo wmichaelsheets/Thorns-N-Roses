@@ -4,7 +4,11 @@ import { getDistributorsByIdAndExpandDist } from '../../Services/DistributorServ
 import { getAndExpandNurseryAndFlower } from '../../Services/FlowerServices';
 import { createCart } from '../../Services/CartService';
 
-export const RetailersCard = ({ retailer, currentUser }) => {
+export const RetailersCard = ({
+  retailer,
+  currentUser,
+  incrementCartCount,
+}) => {
   const [retailDistributor, setRetailDistributor] = useState({});
   const [flowerAndNursery, setFlowerAndNursery] = useState([]);
 
@@ -34,7 +38,9 @@ export const RetailersCard = ({ retailer, currentUser }) => {
       price: flowerPrice,
     };
 
-    createCart(cartObj);
+    incrementCartCount();
+
+    // createCart(cartObj);
   };
 
   return (

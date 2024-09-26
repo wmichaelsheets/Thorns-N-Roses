@@ -10,6 +10,7 @@ import { useEffect, useState } from 'react';
 
 export const AppViews = () => {
   const [currentUser, setCurrentUser] = useState({});
+  const [cartCount, setCartCount] = useState(0);
 
   useEffect(() => {
     const localFlowerUser = localStorage.getItem('flower_user');
@@ -18,13 +19,17 @@ export const AppViews = () => {
     setCurrentUser(flowerUserObject);
   }, []);
 
+  const incrementCartCount = () => {
+    setCartCount((prevCount) => prevCount + 1);
+  };
+
   return (
     <Routes>
       <Route
         path="/"
         element={
           <>
-            <NavBar />
+            <NavBar cartCount={cartCount} />
             <Outlet />
           </>
         }
@@ -33,7 +38,12 @@ export const AppViews = () => {
         <Route path="/distributors" element={<DistributorList />} />
         <Route
           path="/retailers"
-          element={<RetailersList currentUser={currentUser} />}
+          element={
+            <RetailersList
+              currentUser={currentUser}
+              incrementCartCount={incrementCartCount}
+            />
+          }
         />
         <Route path="/cart" element={<Cart currentUser={currentUser} />} />
       </Route>
