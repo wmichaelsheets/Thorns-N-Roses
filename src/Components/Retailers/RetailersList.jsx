@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { getAllRetailers } from '../../Services/RetailerService';
 import { RetailersCard } from './RetailersCard';
 
-export const RetailersList = ({ currentUser }) => {
+export const RetailersList = ({ currentUser, incrementCartCount }) => {
   const [retailers, setRetailers] = useState([]);
 
   useEffect(() => {
@@ -16,6 +16,7 @@ export const RetailersList = ({ currentUser }) => {
           <RetailersCard
             retailer={retailer}
             currentUser={currentUser}
+            incrementCartCount={incrementCartCount}
             key={retailer.id}
           />
         );
