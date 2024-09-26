@@ -24,11 +24,14 @@ export const RetailersCard = ({ retailer, currentUser }) => {
   }, [retailDistributor]);
 
   const handlePurchaseButton = (event) => {
+    const flowerPrice = event.target.dataset.price;
+
     const flowerId = event.target.id;
     const cartObj = {
       retailerId: retailer.id,
-      flowersId: parseInt(flowerId),
+      flowerId: parseInt(flowerId),
       customerId: currentUser.id,
+      price: flowerPrice,
     };
 
     createCart(cartObj);
@@ -59,7 +62,11 @@ export const RetailersCard = ({ retailer, currentUser }) => {
                 {` Flower: ${obj.flower.color} ${obj.flower.species} (${finalMarkUpPrice})
                    
               `}
-                <button id={`${obj.flowerId}`} onClick={handlePurchaseButton}>
+                <button
+                  data-price={`${finalMarkUpPrice}`}
+                  id={`${obj.flowerId}`}
+                  onClick={handlePurchaseButton}
+                >
                   Purchase Flower
                 </button>
                 <div>{`Nursery: ${obj.nurse.name}`}</div>

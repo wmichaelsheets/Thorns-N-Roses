@@ -1,23 +1,23 @@
-import { Link } from "react-router-dom"
-import "./NavBar.css"
+import { Link } from 'react-router-dom';
+import './NavBar.css';
 
 export const NavBar = () => {
-    return (
-        <div className="nav-bar-container">
-            <ul className='nav-bar'>
-                <li>
-                    <Link to={'/nurseries'}>Nurseries</Link>
-                </li>
-                <li>
-                    <Link to={'/distributors'}>Distributors</Link>
-                </li>
-                <li>
-                    <Link to={'/retailers'}>Retailers</Link>
-                </li>
-                <li>
-                    <Link to={'/cart'}>Cart</Link>
-                </li>
-            </ul>
-        </div>
-    )
-}
+  return (
+    <div className="nav-bar-container">
+      <ul className="nav-bar">
+        <li>
+          <Link to={'/nurseries'}>Nurseries</Link>
+        </li>
+        <li>
+          <Link to={'/distributors'}>Distributors</Link>
+        </li>
+        <li>
+          <Link to={'/retailers'}>Retailers</Link>
+        </li>
+        <li>
+          <Link to={'/cart'}>My Cart</Link>
+        </li>
+      </ul>
+    </div>
+  );
+};

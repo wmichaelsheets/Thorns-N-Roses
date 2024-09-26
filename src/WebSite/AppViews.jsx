@@ -5,7 +5,7 @@ import { DistributorList } from '../Components/Distributor/DistributorList';
 import { RetailersList } from '../Components/Retailers/RetailersList';
 import { Login } from '../../auth/Login';
 import { Register } from '../../auth/Register';
-import { Cart } from '../Components/Cart/CartList';
+import { Cart } from '../Components/Cart/Cart';
 import { useEffect, useState } from 'react';
 
 export const AppViews = () => {
@@ -35,7 +35,7 @@ export const AppViews = () => {
           path="/retailers"
           element={<RetailersList currentUser={currentUser} />}
         />
-        <Route path="/cart" element={<Cart />} />
+        <Route path="/cart" element={<Cart currentUser={currentUser} />} />
       </Route>
     </Routes>
   );
