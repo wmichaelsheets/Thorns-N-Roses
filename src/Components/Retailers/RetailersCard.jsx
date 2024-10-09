@@ -40,7 +40,7 @@ export const RetailersCard = ({
 
     incrementCartCount();
 
-    // createCart(cartObj);
+    createCart(cartObj);
   };
 
   return (
